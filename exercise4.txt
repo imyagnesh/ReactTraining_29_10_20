@@ -11,3 +11,34 @@ timing for 1 lac records for each looping technic
 6.reduce
 7. forof
 8. forin
+
+
+groupby with gender + sort by name
+
+const users = [
+    {
+        name: 'Rohit',
+        age: 33,
+        gender: 'male'
+    },
+    {
+        name: 'Virat',
+        age: 30,
+        gender: 'male'
+    },
+    {
+        name: 'Boomrah',
+        age: 25,
+        gender: 'male'
+    },
+    {
+        name: 'kajol',
+        age: 35,
+        gender: 'female'
+    },
+    {
+        name: 'deepika',
+        age: 30,
+        gender: 'female'
+    }
+]
