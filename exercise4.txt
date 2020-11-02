@@ -1,0 +1,13 @@
+find best looping technique from below list
+
+timing for 1 lac records for each looping technic
+
+1. for
+2. while
+3. dowhile
+4. foreach
+
+5. map
+6.reduce
+7. forof
+8. forin
