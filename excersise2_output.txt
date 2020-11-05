@@ -1,0 +1,51 @@
+function getAddress() {
+  return {
+    city: 'Salt Lake City',
+    state: 'UT',
+    zip: 84115,
+    coords: {
+      lat: 40.776608,
+      long: -111.920485,
+    },
+  }
+}
+//Solution
+1. const {city,state,zip} = getAddress();
+   console.log(city,state,zip);
+
+2. const address = getAddress();
+   console.log(address);
+
+3. const {city: c,state: s,zip: z} = getAddress();
+   console.log(c,s,z);
+
+4. const {coords:{lat},coords:{long}} = getAddress();
+   console.log(lat,long);
+
+5. const [one,two]= getNumbers();
+   console.log(one,two);
+
+6. const [one,,three]= getNumbers();
+   console.log(one,three);
+
+7. const [one,,[three,,[,six]]]= getNestedNumbers();
+   console.log(one,three,six);
+
+
+function getNumbers() {
+  return [1, 2, 3, 4, 5, 6]
+}
+
+function getNestedNumbers() {
+  return [1, 2, [3, 4, [5, 6]]]
+}
+
+
+1.  Using destructuring, call `getAddress()` and create a 'city', 'state' and 'zip' variable.
+2. Using destructuring, call `getAddress()` and create an 'address' variable.
+3. Using destructuring, call `getAddress()` and pull the city, state and zip out, and alias them to c, s, z, respectively
+4. Using destructuring, call `getAddress()` and create `lat` and `long` variables.
+5. Call getNumbers and pull the first value out as `one` and the second as `two`
+6. Call getNumbers and pull the first value out as `one` and the third as `three`
+7. Call getNestedNumbers and pull the first value out as `one`, the 3 as `three` and 6 as `six`.
+8. 
