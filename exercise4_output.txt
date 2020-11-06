@@ -1,0 +1,136 @@
+find best looping technique from below list
+
+timing for 1 lac records for each looping technic
+
+1. for
+2. while
+3. dowhile
+4. foreach
+
+5. map
+6.reduce
+7. forof
+8. forin
+
+
+OUTPUT
+--------------------------------------
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('for loop');
+let total=0
+for(let i =0;i<arrData.length;i++) {
+    total+=arrData[i];
+}
+console.timeEnd('for loop'); //273ms
+
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('foreach loop');
+let total=0;
+arrData.forEach(arr =>{
+    total+=arr;
+})
+console.timeEnd('foreach loop'); //560ms
+
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('map loop');
+let total=0;
+arrData.map(arr => {
+     total+=arr;
+})
+console.timeEnd('map loop'); //656
+
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('forof loop');
+let total=0;
+for(let arr of arrData){
+    total+=arr;
+}
+console.timeEnd('forof loop'); //573ms
+
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('forin loop');
+let total=0;
+for(let arr in arrData){
+    total+=arr;
+}
+console.timeEnd('forin loop'); //5269ms
+
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('reduce loop');
+arrData.reduce((total, arr)=> total+=arr,0)
+console.timeEnd('reduce loop'); //411ms
+
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('while loop');
+let total=0,i=0;
+while (i < arrData.length) {
+    total+=arrData[i]
+    i++
+  }
+console.timeEnd('while loop'); //255ms
+
+const arrData = [];
+for (let i = 0; i < 10000000; i++) {
+    arrData.push(i);
+}
+console.time('dowhile loop');
+let total=0,i=0;
+do {
+    total+=arrData[i]
+    i++;
+  } while (i < arrData.length);
+console.timeEnd('dowhile loop'); //500ms
+
+--------------------------------------
+
+
+groupby with gender + sort by name
+
+const users = [
+    {
+        name: 'Rohit',
+        age: 33,
+        gender: 'male'
+    },
+    {
+        name: 'Virat',
+        age: 30,
+        gender: 'male'
+    },
+    {
+        name: 'Boomrah',
+        age: 25,
+        gender: 'male'
+    },
+    {
+        name: 'kajol',
+        age: 35,
+        gender: 'female'
+    },
+    {
+        name: 'deepika',
+        age: 30,
+        gender: 'female'
+    }
+]

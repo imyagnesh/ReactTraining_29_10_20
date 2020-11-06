@@ -1,0 +1,62 @@
+1. With the following code blocks, can you say what will happen in each of these instances?
+
+// what breaks below?
+const c1 = 1;
+c1 = 3; //Breaks here.Assignment to a const
+
+// Or updating a string…
+const c2 = "hello";
+c2 += " world!";//Breaks here.Assignment to a const
+
+// Or reassigning an object…
+const c3 = {};
+c3.name = "Geoff";
+c3.someValue = "Sausage";
+c3 = {};//Breaks here.Assignment to a const
+
+
+2. What will be the output for this hoisting example.
+ 
+var n = 1;
+
+function print() {
+    console.log("print():1:",n);
+    var n = 2;
+    n++;
+    console.log("print():2:",n);
+}
+
+console.log("inline 1: ", n);
+print();
+console.log("inline 2: ", n);
+
+//OUTPUT 
+inline 1:  1
+print():1: undefined 
+print():2: 3
+inline 2:  1
+
+3. What is the output of folowing block scope
+
+let callbacks = []
+for (let i = 0; i <= 2; i++) {
+  callbacks[i] = function () { return i * 2 }
+}
+
+// note the var declaration of the loop iterator
+for (var j = callbacks.length; j < 5; j++) {
+  callbacks[j] = function () { return j * 2 }
+}
+
+console.log( callbacks[0]() );
+console.log( callbacks[1]() );
+console.log( callbacks[2]() );
+console.log( callbacks[3]() );
+console.log( callbacks[4]() );
+
+//OUTPUT here
+0 
+2
+4 
+10 ​​​​​
+10 
