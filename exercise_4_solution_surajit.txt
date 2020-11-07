@@ -1,0 +1,102 @@
+let arr_val = [...Array(100000).keys()];
+
+console.time('for');
+for(let i=0; i<arr_val.length; i++) {
+
+}
+console.timeEnd('for')
+
+
+console.time('while');
+let i=0;
+while(i < arr_val.length) {
+  // do stuff
+  i++;
+}
+console.timeEnd('while')
+
+let j = 0
+console.time('do while')
+do {
+  j++
+} while (j< arr_val.length);
+console.timeEnd('do while')
+
+console.time('forEach');
+arr_val.forEach((element) => {
+
+});
+console.timeEnd('forEach')
+
+console.time('for in ');
+for (x in arr_val) {
+
+}
+console.timeEnd('for in ')
+
+console.time('for in ');
+for (x of arr_val) {
+
+}
+console.timeEnd('for in ')
+
+
+
+// for: 0.829ms
+// while: 0.981ms
+// do while: 1.011ms
+// forEach: 2.477ms
+// forin:  9.924ms
+// forof: 3.580ms
+
+
+========================================================
+
+
+//groupby with gender + sort by name
+
+const users = [
+  {
+      name: 'Rohit',
+      age: 33,
+      gender: 'male'
+  },
+  {
+      name: 'Virat',
+      age: 30,
+      gender: 'male'
+  },
+  {
+      name: 'Boomrah',
+      age: 25,
+      gender: 'male'
+  },
+  {
+      name: 'kajol',
+      age: 35,
+      gender: 'female'
+  },
+  {
+      name: 'deepika',
+      age: 30,
+      gender: 'female'
+  }
+]
+
+
+const groupByGender = users.reduce((t,v) => {
+  (t[v.gender]= t[v.gender] || []).push(v)
+  return t
+},{});
+
+console.log(groupByGender)
+
+Output:
+
+{ male:
+   [ { name: 'Rohit', age: 33, gender: 'male' },
+     { name: 'Virat', age: 30, gender: 'male' },
+     { name: 'Boomrah', age: 25, gender: 'male' } ],
+  female:
+   [ { name: 'kajol', age: 35, gender: 'female' },
+     { name: 'deepika', age: 30, gender: 'female' } ] }

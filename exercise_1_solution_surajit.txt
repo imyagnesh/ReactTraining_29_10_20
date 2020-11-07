@@ -1,0 +1,102 @@
+var li = '<li>' +
+  '<div class="row">' +
+  '<div class="col-md-4">' +
+    '<img src="' + moviePoster + '" height="250" alt="" />' +
+  '</div>' +
+  '<div class="col-md-8">' +
+     '<h2>' + movieTitle + '</h2>' +
+  '</div>' +
+   '</div>' +
+'</li>';
+
+Answ:
+var li = `'<li>' +
+  '<div class="row">' +
+  '<div class="col-md-4">' +
+    '<img src="' + moviePoster + '" height="250" alt="" />' +
+  '</div>' +
+  '<div class="col-md-8">' +
+     '<h2>' + movieTitle + '</h2>' +
+  '</div>' +
+   '</div>' +
+'</li>'`
+console.log(li)
+
+
+function multiply(num1, num2) {
+  return num1 * num2;
+}
+
+Answ: const multiply = (x,y) => x*y
+console.log(multiply(2,8));
+
+
+function toCelsius(fahrenheit) {
+  return (5/9) * (fahrenheit-32);
+}
+
+Answ: const toCelsius = fahrenheit => {return  (5/9) * (fahrenheit-32) }
+console.log(toCelsius(40));
+
+
+
+function padZeros(num, totalLen) {
+  var numStr = num.toString();             
+  var numZeros = totalLen - numStr.length; 
+  for (var i = 1; i <= numZeros; i++) {
+    numStr = "0" + numStr;
+  }
+  return numStr;
+}
+
+Answ:
+
+const padZeros = (num, totalLen) => {
+    var numStr = num.toString();
+    var numZeros = totalLen - numStr.length;
+    for (var i = 1; i <= numZeros; i++) {
+              numStr = "0" + numStr;
+            }
+            return numStr;  
+}
+  console.log(padZeros(6, 2))
+
+
+function power(base, exponent) {
+  var result = 1;
+  for (var i = 0; i < exponent; i++) {
+    result *= base;
+  }
+  return result;
+}
+
+Anw:
+
+const power = (base, exponent) => {
+	var result = 1;
+	for (var i = 0; i < exponent; i++) {
+		result *= base;
+	}
+	return result;
+}
+
+console.log(power(2,8));
+
+
+function greet(who) {
+  console.log("Hello " + who);
+}
+
+Answ: const greet = who => { console.log("Hello " + who)}
+greet("James")
+
+
+
+const account = {
+  username: "marijn",
+  password: "xyzzy"
+}
+account.password = "s3cret" // (*much* more secure)
+console.log(account.password)
+
+Answ: "s3cret"
