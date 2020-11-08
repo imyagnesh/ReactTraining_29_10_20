@@ -1,0 +1,40 @@
+const users = [
+    {
+        name: 'Rohit',
+        age: 33,
+        gender: 'male'
+    },
+    {
+        name: 'Virat',
+        age: 30,
+        gender: 'male'
+    },
+    {
+        name: 'Boomrah',
+        age: 25,
+        gender: 'male'
+    },
+    {
+        name: 'kajol',
+        age: 35,
+        gender: 'female'
+    },
+    {
+        name: 'deepika',
+        age: 30,
+        gender: 'female'
+    }
+]
+
+groupby with gender
+const new_list = users.reduce((k,v) => {
+    const property = v.gender;
+    k[property] = k[property] || [];
+    k[property].push(v);
+    return k;
+}, {});
+
+console.log(new_list)
+
+sort by name
+
