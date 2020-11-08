@@ -1,0 +1,28 @@
+Given
+function getAddress() {
+  return {
+    city: 'Salt Lake City',
+    state: 'UT',
+    zip: 84115,
+    coords: {
+      lat: 40.776608,
+      long: -111.920485,
+    },
+  }
+}
+
+Solution Using destructuring, call `getAddress()` and create a 'city', 'state' and 'zip' variable.
+const newAddress = {...getAddress(), city: 'Hyderabad', state: 'Telangana', zip: 500036}
+console.log(newAddress)
+
+Solution Using destructuring, call `getAddress()` and create an 'address' variable.
+const newAddress = {...getAddress(), address: 'no new address'}
+console.log(newAddress)
+
+Solution Using destructuring, call `getAddress()` and pull the city, state and zip out, and alias them to c, s, z, respectively
+const {city: newcity, state: newstate, zip: newzip} =  getAddress()
+console.log(newcity)
+
+Solution Using destructuring, call `getAddress()` and create `lat` and `long` variables.
+const newAddress = {...getAddress(), lat: 34.44, long: 123.44}
+console.log(newAddress)

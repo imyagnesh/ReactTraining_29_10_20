@@ -26,4 +26,4 @@ function getNestedNumbers() {
 5. Call getNumbers and pull the first value out as `one` and the second as `two`
 6. Call getNumbers and pull the first value out as `one` and the third as `three`
 7. Call getNestedNumbers and pull the first value out as `one`, the 3 as `three` and 6 as `six`.
-8. 
+8.
