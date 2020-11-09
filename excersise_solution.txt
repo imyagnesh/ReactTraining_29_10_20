@@ -1,0 +1,76 @@
+1)
+	Scenario 1 what breaks below?
+	const c1 = 1;
+	c1 = 3;
+		It gives Assignment to constant variable because we can not reassign constants
+
+
+	Scenario 2 Updating a string…
+	const c2 = "hello";
+	c2 += " world!";
+		It gives Assignment to constant variable because we can not reassign constants
+
+
+	Scenario 3 reassigning an object…
+	const c3 = {};
+	c3.name = "Geoff";
+	c3.someValue = "Sausage";
+	Till here it will assign values but as soon as we reassign an object as below
+	c3 = {};
+		It gives Assignment to constant variable as object changing is possible but reassigning of object to same const is not possible
+
+2) What will be the output for this hoisting example.
+	var n = 1;
+
+	function print() {
+	    console.log("print():1:",n);
+	    var n = 2;
+	    n++;
+	    console.log("print():2:",n);
+	}
+
+	console.log("inline 1: ", n); // This will print n value as 1
+	print(); //this will print as below
+		// n undefined ( here not sure why it did not take global var value)
+		// 3
+	console.log("inline 2: ", n); // This will print n value as 1
+
+
+3) What is the output of folowing block scope
+
+	let callbacks = []
+	for (let i = 0; i <= 2; i++) {
+	  callbacks[i] = function () { return i * 2 }
+	}
+
+	console.log( callbacks[0]() ); // This will print 0
+	console.log( callbacks[1]() ); // This will print 2
+	console.log( callbacks[2]() ); // This will print 4
+	console.log( callbacks[3]() ); // This will print callbacks[3] is not a function
+
+	if the loop is run along with the above for statement then
+		console.log(callbacks.length) // gives 3
+		//var declaration in the loop iterator
+		for (var j = callbacks.length; j < 5; j++) {
+
+		  callbacks[j] = function () { return j * 2 }
+		}
+		console.log( callbacks[0]() ); // This will print 0
+		console.log( callbacks[1]() ); // This will print 2
+		console.log( callbacks[2]() ); // This will print 4
+		console.log( callbacks[3]() ); // This will print 10
+		console.log( callbacks[4]() ); // This will print 10
+		console.log( callbacks[5]() ); // This will print callbacks[5] is not a function
+	if the above loop is run without the first for loop then
+		console.log(callbacks.length) // gives 0
+		//var declaration in the loop iterator
+		for (var j = callbacks.length; j < 5; j++) {
+		  callbacks[j] = function () { return j * 2 }
+		}
+		console.log( callbacks[0]() ); // This will print 10
+		console.log( callbacks[1]() ); // This will print 10
+		console.log( callbacks[2]() ); // This will print 10
+		console.log( callbacks[3]() ); // This will print 10
+		console.log( callbacks[4]() ); // This will print 10
+		console.log( callbacks[5]() ); // This will print callbacks[5] is not a function
+
