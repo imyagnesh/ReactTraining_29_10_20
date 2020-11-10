@@ -1,24 +1,26 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import App from './App';
+import App1 from './App1';
 
-import { sayHi } from './test'
-console.log("sayHi", sayHi)
+ReactDOM.render(
+  <>
+    <App fName="Yagnesh" lName="Modh">
+      <h1>Hello From Children</h1>
+    </App>
+    <App1 fName="Yagnesh" lName="Modh">
+      <h1>Hello From Children</h1>
+    </App1>
+  </>,
+  document.getElementById('root'),
+);
 
-// class component
+// App.propTypes = {
+//   fName: PropTypes.string.isRequired,
+// }
 
-export default class App extends Component {
-
-  render() {
-      const {fName, lName, children} = this.props;
-    return (
-      <>
-        <h1>{fName}</h1>
-        <h1>{lName}</h1>
-        <h1>{children}</h1>
-      </>
-    );
-  }
-}
+// console.log(App.propTypes);
 
 // function component
 // Rules of React component
@@ -30,13 +32,10 @@ export default class App extends Component {
 //     return <>
 //         <h1>{fName}</h1>
 //         <h1>{lName}</h1>
-//         <h1>{children}</h1>
+//         <div>{children}</div>
 //     </>
 // }
 
-ReactDOM.render(
-  <App fName="Yagnesh" lName="Modh">
-    Children
-  </App>,
-  document.getElementById("root")
-);
+// App.propTypes = {
+//   fName: PropTypes.string.isRequired,
+// }
