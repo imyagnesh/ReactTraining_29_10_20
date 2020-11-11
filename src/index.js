@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import App from './App';
-import App1 from './App1';
 
-ReactDOM.render(
-  <>
-    <App fName="Yagnesh" lName="Modh">
-      <h1>Hello From Children</h1>
-    </App>
-    <App1 fName="Yagnesh" lName="Modh">
-      <h1>Hello From Children</h1>
-    </App1>
-  </>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // App.propTypes = {
 //   fName: PropTypes.string.isRequired,
