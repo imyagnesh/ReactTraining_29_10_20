@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoForm from './components/todoForm';
 
 export class Todo extends Component {
   constructor(props) {
@@ -6,6 +7,7 @@ export class Todo extends Component {
     this.state = {
       todoText: '',
       todoItems: [],
+      status: 'all',
     };
   }
 
@@ -15,7 +17,8 @@ export class Todo extends Component {
     });
   };
 
-  addTodo = () => {
+  addTodo = (event) => {
+    event.preventDefault();
     const { todoItems, todoText } = this.state;
     this.setState({
       todoItems: [
@@ -27,33 +30,60 @@ export class Todo extends Component {
         },
       ],
       todoText: '',
+      status: 'all',
     });
   };
 
   completeTodo = (id) => {
+    const { todoItems } = this.state;
+
+    const index = todoItems.findIndex((x) => x.id === id);
+
     this.setState({
-      todoItems: this.state.todoItems.map((x) => {
-        if (x.id === id) {
-          return { ...x, isDone: !x.isDone };
-        }
-        return x;
-      }),
+      todoItems: [
+        ...todoItems.slice(0, index),
+        { ...todoItems[index], isDone: !todoItems[index].isDone },
+        ...todoItems.slice(index + 1),
+      ],
     });
   };
 
+  deleteTodo = (id) => {
+    const { todoItems } = this.state;
+
+    const index = todoItems.findIndex((x) => x.id === id);
+
+    this.setState({
+      // todoItems: todoItems.filter(x => x.id !== id);
+      todoItems: [...todoItems.slice(0, index), ...todoItems.slice(index + 1)],
+    });
+  };
+
+  filter = (status) => {
+    this.setState({ status });
+  };
+
   render() {
-    const { todoItems, todoText } = this.state;
+    const { todoItems, todoText, status } = this.state;
+
+    const filteredItems = todoItems.filter((x) => {
+      if (status === 'pending') {
+        return !x.isDone;
+      }
+      if (status === 'completed') {
+        return x.isDone;
+      }
+      return x;
+    });
+
     return (
       <div>
         <h1>Todo App</h1>
-        <div>
-          <input type="text" value={todoText} onChange={this.onChangeText} />
-          <input type="button" value="Add Todo" onClick={this.addTodo} />
-        </div>
+        <TodoForm addTodo={this.addTodo} onChangeText={this.onChangeText} todoText={todoText} />
         <div>
           <h2>Todo Items</h2>
-          {todoItems.map((todo) => (
-            <div>
+          {filteredItems.map((todo) => (
+            <div key={todo.id}>
               <input
                 type="checkbox"
                 checked={todo.isDone}
@@ -66,9 +96,35 @@ export class Todo extends Component {
               >
                 {todo.text}
               </span>
-              <button>Delete</button>
+              <button onClick={() => this.deleteTodo(todo.id)}>Delete</button>
             </div>
           ))}
+        </div>
+        <div>
+          <button
+            style={{
+              borderColor: status === 'all' ? 'red' : 'transparent',
+            }}
+            onClick={() => this.filter('all')}
+          >
+            All
+          </button>
+          <button
+            style={{
+              borderColor: status === 'pending' ? 'red' : 'transparent',
+            }}
+            onClick={() => this.filter('pending')}
+          >
+            Pending
+          </button>
+          <button
+            style={{
+              borderColor: status === 'completed' ? 'red' : 'transparent',
+            }}
+            onClick={() => this.filter('completed')}
+          >
+            Completed
+          </button>
         </div>
       </div>
     );
