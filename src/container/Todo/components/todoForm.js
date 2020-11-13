@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import InputText from '../../../components/InputText';
 import Button from '../../../components/Button';
 
 const todoForm = ({ addTodo, onChangeText, todoText }) => {
+  console.log('todoForm');
   return (
     <form onSubmit={addTodo}>
       <InputText value={todoText} onChange={onChangeText} />
@@ -11,4 +12,4 @@ const todoForm = ({ addTodo, onChangeText, todoText }) => {
   );
 };
 
-export default todoForm;
+export default memo(todoForm);

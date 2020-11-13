@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import TodoForm from './components/todoForm';
+import TodoItems from './components/todoItems';
+import TodoFooter from './components/todoFooter';
 
-export class Todo extends Component {
+export class Todo extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,66 +68,17 @@ export class Todo extends Component {
   render() {
     const { todoItems, todoText, status } = this.state;
 
-    const filteredItems = todoItems.filter((x) => {
-      if (status === 'pending') {
-        return !x.isDone;
-      }
-      if (status === 'completed') {
-        return x.isDone;
-      }
-      return x;
-    });
-
     return (
       <div>
-        <h1>Todo App</h1>
+        <h1 data-testid="h1Test">Todo Application</h1>
         <TodoForm addTodo={this.addTodo} onChangeText={this.onChangeText} todoText={todoText} />
-        <div>
-          <h2>Todo Items</h2>
-          {filteredItems.map((todo) => (
-            <div key={todo.id}>
-              <input
-                type="checkbox"
-                checked={todo.isDone}
-                onChange={() => this.completeTodo(todo.id)}
-              />
-              <span
-                style={{
-                  textDecoration: todo.isDone ? 'line-through' : 'none',
-                }}
-              >
-                {todo.text}
-              </span>
-              <button onClick={() => this.deleteTodo(todo.id)}>Delete</button>
-            </div>
-          ))}
-        </div>
-        <div>
-          <button
-            style={{
-              borderColor: status === 'all' ? 'red' : 'transparent',
-            }}
-            onClick={() => this.filter('all')}
-          >
-            All
-          </button>
-          <button
-            style={{
-              borderColor: status === 'pending' ? 'red' : 'transparent',
-            }}
-            onClick={() => this.filter('pending')}
-          >
-            Pending
-          </button>
-          <button
-            style={{
-              borderColor: status === 'completed' ? 'red' : 'transparent',
-            }}
-            onClick={() => this.filter('completed')}
-          >
-            Completed
-          </button>
-        </div>
+        <TodoItems
+          items={todoItems}
+          completeTodo={this.completeTodo}
+          deleteTodo={this.deleteTodo}
+          status={status}
+        />
+        <TodoFooter status={status} filter={this.filter} />
       </div>
     );
   }
