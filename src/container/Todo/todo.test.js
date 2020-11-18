@@ -1,6 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { Todo } from './index';
+
+afterAll(cleanup);
 
 describe('test todo component', () => {
   test('should take snapshot', () => {

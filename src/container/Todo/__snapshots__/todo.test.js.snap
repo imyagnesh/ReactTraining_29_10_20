@@ -2,51 +2,10 @@
 
 exports[`test todo component should take snapshot 1`] = `
 <div>
-  <div>
-    <h1
-      data-testid="h1Test"
-    >
-      Todo Application
-    </h1>
-    <form>
-      <input
-        class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-        type="text"
-        value=""
-      />
-      <button
-        class="btn btn-blue"
-        type="submit"
-        value="Add Todo"
-      >
-        Button
-      </button>
-    </form>
-    <div>
-      <h2>
-        Todo Items
-      </h2>
-    </div>
-    <div>
-      <button
-        style="border-color: red;"
-        type="button"
-      >
-        All
-      </button>
-      <button
-        style="border-color: transparent;"
-        type="button"
-      >
-        Pending
-      </button>
-      <button
-        style="border-color: transparent;"
-        type="button"
-      >
-        Completed
-      </button>
-    </div>
-  </div>
+  <h1
+    data-testid="h1Test"
+  >
+     Loading...
+  </h1>
 </div>
 `;
