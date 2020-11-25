@@ -1,0 +1,37 @@
+{
+  "user": [{
+    "username": "admin",
+    "password": "Password1" 
+  },
+  {
+    "username": "user",
+    "password": "Password1" 
+  }],
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone",
+      "categroyId": 1,
+      "price": "67000",
+      "quantity": "12"
+    },
+    {
+      "id": 2,
+      "name": "Macbook Pro",
+      "categroyId": 2,
+      "price": "123000",
+      "quantity": "2"
+    }
+  ],
+  "productCategory": [
+    {
+      "id": 1,
+      "cagegory": "Mobile"
+    },
+    {
+      "id": 2,
+      "cagegory": "Laptop"
+    }
+  ],
+  "cart": []
+}
