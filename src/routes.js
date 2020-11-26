@@ -1,4 +1,5 @@
 import Login from './Containers/Login'
+import Admin from './Containers/Admin'
 
 const routes = [
   {
@@ -7,7 +8,12 @@ const routes = [
     auth: false,
     component: Login,
     linkText: 'Login',
-    authRequired: false
+  },
+  {
+    path: "/admin",
+    auth: true,
+    component: Admin,
+    linkText: 'Admin',
   },
 ];
 
