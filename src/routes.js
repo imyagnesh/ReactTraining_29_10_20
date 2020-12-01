@@ -1,5 +1,6 @@
 import Login from './Containers/Login'
 import Admin from './Containers/Admin'
+import AddProduct from './Containers/AddProduct'
 
 const routes = [
   {
@@ -13,6 +14,12 @@ const routes = [
     path: "/admin",
     auth: true,
     component: Admin,
+    linkText: 'Admin',
+  },
+  {
+    path: "/addProduct",
+    auth: true,
+    component: AddProduct,
     linkText: 'Admin',
   },
 ];

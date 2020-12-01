@@ -1,59 +1,64 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import axios from "../../utils/axios";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-const Index = () => {
-  const [products, setProducts] = useState([]);
-  const [productCategory, setProductCategory] = useState([]);
-  const [error, setError] = useState(null);
-
-  const loadData = useCallback(async () => {
-    try {
-      const res = await Promise.all([
-        axios.get("products"),
-        axios.get("productCategory"),
-      ]);
-      setProducts(res[0].data);
-      setProductCategory(res[1].data);
-    } catch (error) {
-      setError(error);
-    }
-  }, []);
-
-  const getCategoryName = useCallback(
-    (categroyId) =>
-      productCategory.find((x) => x.id === categroyId)?.cagegory || "",
-    [productCategory]
-  );
-
+const Index = ({
+  history,
+  productCategory,
+  products,
+  loadProducts,
+  loadProductsCategory,
+}) => {
   useEffect(() => {
-    loadData();
-  }, [loadData]);
+    loadProducts();
+    loadProductsCategory();
+  }, [loadProducts, loadProductsCategory]);
 
   return (
     <div>
       <h1>Products</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Product Category</th>
-            <th>Price</th>
-            <th>quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>{product.name}</td>
-              <td>{getCategoryName(product.categroyId)}</td>
-              <td>{product.price}</td>
-              <td>{product.quantity}</td>
+      <button onClick={() => history.push("/addProduct")}>
+        Add Product
+      </button>
+      {products.loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Product Category</th>
+              <th>Price</th>
+              <th>quantity</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {productCategory.data.length > 0 && products.data.map((product) => (
+              <tr key={product.id}>
+                <td>{product.name}</td>
+                <td>{product.categoryName}</td>
+                <td>{product.price}</td>
+                <td>{product.quantity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
 
-export default Index;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+    productCategory: state.productCategory,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadProducts: () => dispatch({ type: "LOAD_PRODUCTS_REQUEST" }),
+    loadProductsCategory: () =>
+      dispatch({ type: "LOAD_PRODUCT_CATEGORY_REQUEST" }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);
