@@ -1,4 +1,6 @@
 import FormTextInput from "../../Components/FormTextInput";
+import FormikSelect from "../../Components/FormikSelect";
+import FormikUpload from "../../Components/FormikUpload";
 
 export const fields = [
   {
@@ -11,6 +13,18 @@ export const fields = [
         return "Product Name is Required";
       }
     },
+  },
+  {
+    name: "categroyId",
+    placeholder: "Category",
+    initialvalue: "",
+    component: FormikSelect,
+    validate: (value) => {
+      if (!value) {
+        return "Category is Required";
+      }
+    },
+    options: [],
   },
   {
     name: "price",
@@ -32,14 +46,23 @@ export const fields = [
     component: FormTextInput,
     validate: (value) => {
       if (!value) {
-        return "Price is Required";
+        return "Quantity is Required";
       }
     },
   },
+  // {
+  //   name: "files",
+  //   placeholder: "Product Images",
+  //   component: FormikUpload,
+  //   validate: (value) => {
+  //     if (!value) {
+  //       return "Product Images is Required";
+  //     }
+  //   },
+  // },
 ];
 
 export const initialValues = fields.reduce(
   (p, c) => ({ ...p, [c.name]: c.initialValue }),
   {}
 );
-

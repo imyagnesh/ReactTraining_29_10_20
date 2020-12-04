@@ -1,3 +1,12 @@
+https://github.com/brillout/awesome-redux
+
+https://github.com/imyagnesh/opus_training/tree/create-react-app/opus-app/src
+
+yagnesh.modh@gmail.com
+hey@yagneshmodh.com
+yagneshmodh.com
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

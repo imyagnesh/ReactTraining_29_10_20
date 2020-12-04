@@ -1,64 +1,45 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useContext, useEffect } from "react";
+import { ProdContext } from "../../Context/productsContext";
 
-const Index = ({
-  history,
-  productCategory,
-  products,
-  loadProducts,
-  loadProductsCategory,
-}) => {
+const Index = ({ history }) => {
+  const { products, loadProducts, deleteProduct } = useContext(ProdContext);
+
   useEffect(() => {
     loadProducts();
-    loadProductsCategory();
-  }, [loadProducts, loadProductsCategory]);
+  }, [loadProducts])
 
   return (
     <div>
       <h1>Products</h1>
-      <button onClick={() => history.push("/addProduct")}>
-        Add Product
-      </button>
-      {products.loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>Product Category</th>
-              <th>Price</th>
-              <th>quantity</th>
+      <button onClick={() => history.push("/addProduct")}>Add Product</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Price</th>
+            <th>quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.name}</td>
+              <td>{product.categroyId}</td>
+              <td>{product.price}</td>
+              <td>{product.quantity}</td>
+              <td>
+                <button type="button" onClick={() => deleteProduct(product.id)}>
+                  Delete
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {productCategory.data.length > 0 && products.data.map((product) => (
-              <tr key={product.id}>
-                <td>{product.name}</td>
-                <td>{product.categoryName}</td>
-                <td>{product.price}</td>
-                <td>{product.quantity}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.products,
-    productCategory: state.productCategory,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadProducts: () => dispatch({ type: "LOAD_PRODUCTS_REQUEST" }),
-    loadProductsCategory: () =>
-      dispatch({ type: "LOAD_PRODUCT_CATEGORY_REQUEST" }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default Index;
